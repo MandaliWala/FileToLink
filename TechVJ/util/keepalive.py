@@ -3,7 +3,7 @@ import logging
 import aiohttp
 import traceback
 from info import *
-
+from pyrogram import Client, filters
 
 async def ping_server():
     sleep_time = PING_INTERVAL
@@ -79,7 +79,6 @@ def get_system_info():
         f"🔄 **System Uptime:** {system_uptime}\n"
         f"💾 **RAM Usage:** {used_ram} / {total_ram}\n"
         f"📁 **Disk Usage:** {used_disk} / {total_disk}\n"
-        f"🉐 **Vᴇʀsɪᴏɴ:** {VERSION}"
     )
     return system_info
 
@@ -99,3 +98,4 @@ async def send_system_info(client, message):
     await asyncio.sleep(60)
     await info.delete()
     await message.delete()
+
